@@ -51,7 +51,7 @@ $(document).ready(function () {
 
     var defenderIsSelected = false;
 
-    var gameEnd = false;
+    var killCount = 0;
 
 
 
@@ -106,7 +106,8 @@ $(document).ready(function () {
 
         defenderIsSelected = false;
 
-        gameEnd = false;
+        killCount = 0;
+
 
         $("#xenomorph").removeClass("d-none");
         $("#vader").removeClass("d-none");
@@ -151,6 +152,7 @@ $(document).ready(function () {
     function displayDefender() {
 
         $("#defender").removeClass("d-none");
+        $("#defenderCard").removeClass("bg-dark");
         $("#defenderName").html(defender.name)
         $("#defenderImage").attr("src", defender.portrait);
         $("#defenderHealth").html(defender.health);
@@ -280,8 +282,10 @@ $(document).ready(function () {
                 $("#fightInfo2").html(defender.name + " attacked you for " + defender.counterAttackPower + " damage.")
                 console.log("player health: " + player.health);
 
+                // Lose Conditions
+
                 if (player.health <= 0) {
-                    $("#task").text("Defeated");
+                    $("#task").text("Defeat!");
                     $("#fightInfo2").html(defender.name + " destroyed you!");
                     $("#fightButton").addClass("d-none");
                     $("#resetButton").removeClass("d-none")
@@ -291,26 +295,40 @@ $(document).ready(function () {
             } else {
 
                 defenderIsSelected = false;
-                $("#fightInfo2").html("You defeated " + defender.name + "!")
-                $("#defender").addClass("d-none");
-                $(".char-select").removeClass("bg-secondary");
-                $("#task").text("Select a Defender");
+
+                killCount++;
+                console.log("kills: " + killCount);
+
+                // win round conditions
+                if (killCount < 3) {
+
+                    $("#fightInfo2").html("You defeated " + defender.name + "!")
+                    $("#defenderCard").addClass("bg-dark");
+                    $(".char-select").removeClass("bg-secondary");
+                    $("#task").text("Select a Defender");
+
+
+                    // win game conditions
+                } else {
+
+                    $("#defenderCard").addClass("bg-dark");
+                    $("#task").text("Victory!");
+                    $("#fightInfo2").html("You eliminated them all!");
+                    $("#fightButton").addClass("d-none");
+                    $("#resetButton").removeClass("d-none")
+
+                }
 
             }
-
-
 
         } else {
             console.log("need to select player and defender")
         }
 
-
-
-
-        $("#resetButton").on("click", function () {
-
-            reset();
-        })
-
     });
+
+    $("#resetButton").on("click", function () {
+
+        reset();
+    })
 });
