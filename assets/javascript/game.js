@@ -7,7 +7,7 @@ $(document).ready(function () {
         name: "Xenomorph",
         portrait: "./assets/images/xenomorph.jpg",
         health: 120,
-        attackPower: 5,
+        attackPower: 3,
         counterAttackPower: 10,
 
     }
@@ -17,7 +17,7 @@ $(document).ready(function () {
         name: "Darth Vader",
         portrait: "./assets/images/vader.jpg",
         health: 100,
-        attackPower: 6,
+        attackPower: 3,
         counterAttackPower: 12,
 
 
@@ -28,7 +28,7 @@ $(document).ready(function () {
         name: "Predator",
         portrait: "./assets/images/predator.jpg",
         health: 80,
-        attackPower: 10,
+        attackPower: 4,
         counterAttackPower: 15,
 
     }
@@ -38,8 +38,8 @@ $(document).ready(function () {
         name: "Terminator",
         portrait: "./assets/images/terminator.jpg",
         health: 140,
-        attackPower: 4,
-        counterAttackPower: 8,
+        attackPower: 2,
+        counterAttackPower: 10,
 
     }
 
@@ -187,11 +187,13 @@ $(document).ready(function () {
 
     $("#fightButton").on("click", function () {
 
-        if (playerIsSelected === true && defenderIsSelected === true) {
+        if (playerIsSelected === true && defenderIsSelected === true && player.health > 0) {
 
             defender.health -= player.counterAttackPower;
             $("#defenderHealth").html(defender.health);
+            $("#fightInfo1").html("You attacked " + defender.name + " for " + player.counterAttackPower + " damage.")
             console.log("defender health: " + defender.health);
+
 
             player.counterAttackPower += player.attackPower;
             console.log("player power: " + player.counterAttackPower);
@@ -199,7 +201,21 @@ $(document).ready(function () {
             if (defender.health > 0) {
                 player.health -= defender.counterAttackPower;
                 $("#playerHealth").html(player.health);
+                $("#fightInfo2").html(defender.name + " attacked you for " + defender.counterAttackPower + " damage.")
                 console.log("player health: " + player.health);
+
+                if (player.health <= 0) {
+                    $("#fightInfo2").html(defender.name + " destroyed you!")
+                }
+
+            } else {
+
+                defenderIsSelected = false;
+                $("#fightInfo2").html("You defeated " + defender.name + "!")
+                $("#defender").addClass("d-none");
+                $(".char-select").removeClass("bg-secondary");
+                $("#task").text("Select a Defender");
+
             }
 
         } else {
