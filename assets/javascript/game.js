@@ -47,7 +47,6 @@ $(document).ready(function () {
 
     var defender = {}
 
-    var playerIsSelected = false;
 
 
 
@@ -68,73 +67,145 @@ $(document).ready(function () {
         $("#playerName").html(player.name)
         $("#playerImage").attr("src", player.portrait);
         $("#playerHealth").html(player.health);
+
+        console.log(player);
+        playerIsSelected = true;
+        $("#task").text("Select a Defender");
+    }
+
+    function displayDefender() {
+
+        $("#defender").removeClass("d-none");
+        $("#defenderName").html(defender.name)
+        $("#defenderImage").attr("src", defender.portrait);
+        $("#defenderHealth").html(defender.health);
+
+        console.log(defender);
+        defenderIsSelected = true;
+        console.log(defenderIsSelected);
+        $(".char-select").addClass("bg-secondary");
+        $("#task").text("Battle!!!");
     }
 
     // Choose Player
 
+    var playerIsSelected = false;
+
+    var defenderIsSelected = false;
 
 
 
 
     $("#xenomorph").on("click", function () {
 
-        if (playerIsSelected === false) {
+        if (playerIsSelected === false && defenderIsSelected === false) {
 
             player = xeno;
             $(this).addClass("d-none");
             displayPlayer();
-            console.log(player);
-            playerIsSelected = true;
-            console.log(playerIsSelected)
+
+        } else if (playerIsSelected === true && defenderIsSelected === false) {
+
+            defender = xeno;
+            $(this).addClass("d-none");
+            displayDefender();
 
         } else {
-            console.log("Player already selected")
+
+            console.log("player and defender selected")
+
         }
+
+
     })
 
     $("#vader").on("click", function () {
 
-        if (playerIsSelected === false) {
+        if (playerIsSelected === false && defenderIsSelected === false) {
 
             player = vader;
             $(this).addClass("d-none");
             displayPlayer();
-            console.log(player);
-            playerIsSelected = true;
+
+        } else if (playerIsSelected === true && defenderIsSelected === false) {
+
+            defender = vader;
+            $(this).addClass("d-none");
+            displayDefender();
 
         } else {
-            console.log("Player already selected")
+
+            console.log("player and defender selected")
+
         }
     })
 
     $("#predator").on("click", function () {
 
-        if (playerIsSelected === false) {
+        if (playerIsSelected === false && defenderIsSelected === false) {
 
             player = pred;
             $(this).addClass("d-none");
             displayPlayer();
-            console.log(player);
-            playerIsSelected = true;
+
+        } else if (playerIsSelected === true && defenderIsSelected === false) {
+
+            defender = pred;
+            $(this).addClass("d-none");
+            displayDefender();
 
         } else {
-            console.log("Player already selected")
+
+            console.log("player and defender selected")
+
         }
     })
 
     $("#terminator").on("click", function () {
 
-        if (playerIsSelected === false) {
+        if (playerIsSelected === false && defenderIsSelected === false) {
 
             player = term;
             $(this).addClass("d-none");
             displayPlayer();
-            console.log(player);
-            playerIsSelected = true;
+
+
+        } else if (playerIsSelected === true && defenderIsSelected === false) {
+
+            defender = term;
+            $(this).addClass("d-none");
+            displayDefender();
 
         } else {
-            console.log("Player already selected")
+
+            console.log("player and defender selected")
+
         }
+    })
+
+    // Fighting
+
+    $("#fightButton").on("click", function () {
+
+        if (playerIsSelected === true && defenderIsSelected === true) {
+
+            defender.health -= player.counterAttackPower;
+            $("#defenderHealth").html(defender.health);
+            console.log("defender health: " + defender.health);
+
+            player.counterAttackPower += player.attackPower;
+            console.log("player power: " + player.counterAttackPower);
+
+            if (defender.health > 0) {
+                player.health -= defender.counterAttackPower;
+                $("#playerHealth").html(player.health);
+                console.log("player health: " + player.health);
+            }
+
+        } else {
+            console.log("need to select player and defender")
+        }
+
     })
 
 
