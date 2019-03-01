@@ -47,15 +47,88 @@ $(document).ready(function () {
 
     var defender = {}
 
+    var playerIsSelected = false;
+
+    var defenderIsSelected = false;
+
+    var gameEnd = false;
+
 
 
 
     function reset() {
+        xeno = {
+
+            name: "Xenomorph",
+            portrait: "./assets/images/xenomorph.jpg",
+            health: 120,
+            attackPower: 3,
+            counterAttackPower: 10,
+
+        }
+
+        vader = {
+
+            name: "Darth Vader",
+            portrait: "./assets/images/vader.jpg",
+            health: 100,
+            attackPower: 3,
+            counterAttackPower: 12,
+
+
+        }
+
+        pred = {
+
+            name: "Predator",
+            portrait: "./assets/images/predator.jpg",
+            health: 80,
+            attackPower: 4,
+            counterAttackPower: 15,
+
+        }
+
+        term = {
+
+            name: "Terminator",
+            portrait: "./assets/images/terminator.jpg",
+            health: 140,
+            attackPower: 2,
+            counterAttackPower: 10,
+
+        }
+
+        player = {}
+
+        defender = {}
+
+        playerIsSelected = false;
+
+        defenderIsSelected = false;
+
+        gameEnd = false;
+
+        $("#xenomorph").removeClass("d-none");
+        $("#vader").removeClass("d-none");
+        $("#predator").removeClass("d-none");
+        $("#terminator").removeClass("d-none");
+        $("#player").addClass("d-none");
+        $("#defender").addClass("d-none");
+
+        $(".char-select").removeClass("bg-secondary")
+
         $(".xhp").text(xeno.health);
         $(".vhp").text(vader.health);
         $(".php").text(pred.health);
         $(".thp").text(term.health);
+        $("#task").text("Select Your Character");
+        console.log("reset");
 
+        $("#fightButton").removeClass("d-none");
+        $("#resetButton").addClass("d-none");
+
+        $("#fightInfo1").html("");
+        $("#fightInfo2").html("");
 
     }
 
@@ -70,7 +143,9 @@ $(document).ready(function () {
 
         console.log(player);
         playerIsSelected = true;
+        console.log(playerIsSelected);
         $("#task").text("Select a Defender");
+
     }
 
     function displayDefender() {
@@ -89,9 +164,7 @@ $(document).ready(function () {
 
     // Choose Player
 
-    var playerIsSelected = false;
 
-    var defenderIsSelected = false;
 
 
 
@@ -185,9 +258,12 @@ $(document).ready(function () {
 
     // Fighting
 
+
+
     $("#fightButton").on("click", function () {
 
         if (playerIsSelected === true && defenderIsSelected === true && player.health > 0) {
+
 
             defender.health -= player.counterAttackPower;
             $("#defenderHealth").html(defender.health);
@@ -205,7 +281,11 @@ $(document).ready(function () {
                 console.log("player health: " + player.health);
 
                 if (player.health <= 0) {
-                    $("#fightInfo2").html(defender.name + " destroyed you!")
+                    $("#task").text("Defeated");
+                    $("#fightInfo2").html(defender.name + " destroyed you!");
+                    $("#fightButton").addClass("d-none");
+                    $("#resetButton").removeClass("d-none")
+
                 }
 
             } else {
@@ -218,12 +298,19 @@ $(document).ready(function () {
 
             }
 
+
+
         } else {
             console.log("need to select player and defender")
         }
 
-    })
 
 
 
+        $("#resetButton").on("click", function () {
+
+            reset();
+        })
+
+    });
 });
