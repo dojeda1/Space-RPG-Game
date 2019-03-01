@@ -74,64 +74,69 @@ $(document).ready(function () {
 
 
 
-    if (playerIsSelected === false) {
 
-        $("#xenomorph").on("click", function () {
+
+    $("#xenomorph").on("click", function () {
+
+        if (playerIsSelected === false) {
 
             player = xeno;
-
             $(this).addClass("d-none");
-
             displayPlayer();
-
             console.log(player);
-
             playerIsSelected = true;
-
             console.log(playerIsSelected)
-        })
 
-        $("#vader").on("click", function () {
+        } else {
+            console.log("Player already selected")
+        }
+    })
+
+    $("#vader").on("click", function () {
+
+        if (playerIsSelected === false) {
 
             player = vader;
-
             $(this).addClass("d-none");
-
             displayPlayer();
-
             console.log(player);
-
             playerIsSelected = true;
-        })
 
-        $("#predator").on("click", function () {
+        } else {
+            console.log("Player already selected")
+        }
+    })
+
+    $("#predator").on("click", function () {
+
+        if (playerIsSelected === false) {
 
             player = pred;
-
             $(this).addClass("d-none");
-
             displayPlayer();
-
             console.log(player);
-
             playerIsSelected = true;
-        })
 
-        $("#terminator").on("click", function () {
+        } else {
+            console.log("Player already selected")
+        }
+    })
+
+    $("#terminator").on("click", function () {
+
+        if (playerIsSelected === false) {
 
             player = term;
-
             $(this).addClass("d-none");
-
             displayPlayer();
-
             console.log(player);
-
             playerIsSelected = true;
-        })
 
-    } else {
-        console.log("Player already selected")
-    }
+        } else {
+            console.log("Player already selected")
+        }
+    })
+
+
 
 });
