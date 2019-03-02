@@ -1,3 +1,25 @@
-body {
-    background-image: url("../images/dark-triangles.png")
+body,
+html {
+
+
+    height: 100%;
+
+}
+
+
+.background {
+    /* The image used */
+    background-image: url("../images/background3.jpg");
+    /* Full height */
+    min-height: 100%;
+
+
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+
 }

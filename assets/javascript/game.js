@@ -6,6 +6,7 @@ $(document).ready(function () {
 
         name: "Xenomorph",
         portrait: "./assets/images/xenomorph.jpg",
+        portraitDefeat: "./assets/images/xenomorph-defeated.jpg",
         health: 120,
         attackPower: 3,
         counterAttackPower: 10,
@@ -16,8 +17,9 @@ $(document).ready(function () {
 
         name: "Darth Vader",
         portrait: "./assets/images/vader.jpg",
+        portraitDefeat: "./assets/images/vader-defeated.jpg",
         health: 100,
-        attackPower: 3,
+        attackPower: 4,
         counterAttackPower: 12,
 
 
@@ -27,8 +29,9 @@ $(document).ready(function () {
 
         name: "Predator",
         portrait: "./assets/images/predator.jpg",
+        portraitDefeat: "./assets/images/predator-defeated.jpg",
         health: 80,
-        attackPower: 4,
+        attackPower: 6,
         counterAttackPower: 15,
 
     }
@@ -37,6 +40,7 @@ $(document).ready(function () {
 
         name: "Terminator",
         portrait: "./assets/images/terminator.jpg",
+        portraitDefeat: "./assets/images/terminator-defeated.jpg",
         health: 140,
         attackPower: 2,
         counterAttackPower: 10,
@@ -57,46 +61,15 @@ $(document).ready(function () {
 
 
     function reset() {
-        xeno = {
 
-            name: "Xenomorph",
-            portrait: "./assets/images/xenomorph.jpg",
-            health: 120,
-            attackPower: 3,
-            counterAttackPower: 10,
-
-        }
-
-        vader = {
-
-            name: "Darth Vader",
-            portrait: "./assets/images/vader.jpg",
-            health: 100,
-            attackPower: 3,
-            counterAttackPower: 12,
-
-
-        }
-
-        pred = {
-
-            name: "Predator",
-            portrait: "./assets/images/predator.jpg",
-            health: 80,
-            attackPower: 4,
-            counterAttackPower: 15,
-
-        }
-
-        term = {
-
-            name: "Terminator",
-            portrait: "./assets/images/terminator.jpg",
-            health: 140,
-            attackPower: 2,
-            counterAttackPower: 10,
-
-        }
+        xeno.health = 120;
+        xeno.counterAttackPower = 10;
+        vader.health = 100;
+        vader.counterAttackPower = 12;
+        pred.health = 80;
+        pred.counterAttackPower = 15;
+        term.health = 140;
+        term.counterAttackPower = 10;
 
         player = {}
 
@@ -114,6 +87,7 @@ $(document).ready(function () {
         $("#predator").removeClass("d-none");
         $("#terminator").removeClass("d-none");
         $("#player").addClass("d-none");
+        $("#playerCard").removeClass("bg-dark");
         $("#defender").addClass("d-none");
 
         $(".char-select").removeClass("bg-secondary")
@@ -126,6 +100,7 @@ $(document).ready(function () {
         console.log("reset");
 
         $("#fightButton").removeClass("d-none");
+        $("#fightButton").removeClass("btn-light");
         $("#resetButton").addClass("d-none");
 
         $("#fightInfo1").html("");
@@ -156,6 +131,7 @@ $(document).ready(function () {
         $("#defenderName").html(defender.name)
         $("#defenderImage").attr("src", defender.portrait);
         $("#defenderHealth").html(defender.health);
+        $("#fightButton").addClass("btn-light");
 
         console.log(defender);
         defenderIsSelected = true;
@@ -287,6 +263,8 @@ $(document).ready(function () {
                 if (player.health <= 0) {
                     $("#task").text("Defeat!");
                     $("#fightInfo2").html(defender.name + " destroyed you!");
+                    $("#playerCard").addClass("bg-dark");
+                    $("#playerImage").attr("src", player.portraitDefeat);
                     $("#fightButton").addClass("d-none");
                     $("#resetButton").removeClass("d-none")
 
@@ -304,14 +282,17 @@ $(document).ready(function () {
 
                     $("#fightInfo2").html("You defeated " + defender.name + "!")
                     $("#defenderCard").addClass("bg-dark");
+                    $("#defenderImage").attr("src", defender.portraitDefeat);
                     $(".char-select").removeClass("bg-secondary");
                     $("#task").text("Select a Defender");
+                    $("#fightButton").removeClass("btn-light");
 
 
                     // win game conditions
                 } else {
 
                     $("#defenderCard").addClass("bg-dark");
+                    $("#defenderImage").attr("src", defender.portraitDefeat);
                     $("#task").text("Victory!");
                     $("#fightInfo2").html("You eliminated them all!");
                     $("#fightButton").addClass("d-none");
