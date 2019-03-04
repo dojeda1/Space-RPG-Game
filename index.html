@@ -32,42 +32,50 @@
 
             <div class="row">
 
-                <div id="xenomorph" class="col-sm-3 mx-auto">
+                <div id="xenomorph" class="col-3 mx-auto">
                     <div class="card char-select">
-                        <h6 class="card-title text-center">Xenomorph</h6>
+                        <span class="name-tag">
+                            <h6 class="card-title text-center">Xenomorph</h6>
+                        </span>
                         <img class="card-img-top" src="./assets/images/xenomorph.jpg" alt="Card image cap">
                         <div class="card-body text-center">
-                            <p class="card-text">HP: <span class="xhp"></span></p>
+                            <p class="card-text"><span class="hp-tag">HP: </span><span class="xhp"></span></p>
                         </div>
                     </div>
                 </div>
 
-                <div id="vader" class="col-sm-3 mx-auto">
+                <div id="vader" class="col-3 mx-auto">
                     <div class="card char-select">
-                        <h6 class="card-title text-center">Darth Vader</h6>
+                        <span class="name-tag">
+                            <h6 class="card-title text-center">Darth Vader</h6>
+                        </span>
                         <img class="card-img-top" src="./assets/images/vader.jpg" alt="Card image cap">
                         <div class="card-body text-center">
-                            <p class="card-text">HP: <span class="vhp"></span></p>
+                            <p class="card-text"><span class="hp-tag">HP: </span><span class="vhp"></span></p>
                         </div>
                     </div>
                 </div>
 
-                <div id="predator" class="col-sm-3 mx-auto">
+                <div id="predator" class="col-3 mx-auto">
                     <div class="card char-select">
-                        <h6 class="card-title text-center">Predator</h6>
+                        <span class="name-tag">
+                            <h6 class="card-title text-center">Predator</h6>
+                        </span>
                         <img class="card-img-top" src="./assets/images/predator.jpg" alt="Card image cap">
                         <div class="card-body text-center">
-                            <p class="card-text">HP: <span class="php"></span></p>
+                            <p class="card-text"><span class="hp-tag">HP: </span><span class="php"></span></p>
                         </div>
                     </div>
                 </div>
 
-                <div id="terminator" class="col-sm-3 mx-auto">
+                <div id="terminator" class="col-3 mx-auto">
                     <div class="card char-select">
-                        <h6 class="card-title text-center">Terminator</h6>
+                        <span class="name-tag">
+                            <h6 class="card-title text-center">Terminator</h6>
+                        </span>
                         <img class="card-img-top" src="./assets/images/terminator.jpg" alt="Card image cap">
                         <div class="card-body text-center">
-                            <p class="card-text">HP: <span class="thp"></span></p>
+                            <p class="card-text"><span class="hp-tag">HP: </span><span class="thp"></span></p>
                         </div>
                     </div>
                 </div>
@@ -78,14 +86,16 @@
 
             <div class="row">
 
-                <div class="col-sm-4 text-center">
+                <div class="col-4 text-center">
                     <p class="text-light my-3"></p>
                     <div id="player" class="col-sm-12 mx-auto d-none">
                         <div id="playerCard" class="card character bg-success text-light">
-                            <h6 id="playerName" class="card-title text-center"></h6>
+                            <span class="name-tag">
+                                <h6 id="playerName" class="card-title text-center"></h6>
+                            </span>
                             <img id="playerImage" class="card-img-top" src="" alt="Card image cap">
                             <div class="card-body text-center">
-                                <p class="card-text">HP: <span id="playerHealth"></span></p>
+                                <p class="card-text"><span class="hp-tag">HP: </span><span id="playerHealth"></span></p>
                             </div>
                         </div>
                     </div>
@@ -93,30 +103,48 @@
 
                 <!-- Fight Section -->
 
-                <div class="col-sm-4 text-center">
+                <div class="col-4 text-center">
                     <h1 class="text-light mt-5 pt-5">VS.</h1>
-                    <span id="gameButtons">
-                        <button id="fightButton" type="button" class="btn btn-secondary">Fight</button>
-                        <button id="resetButton" type="button" class="btn btn-primary">Restart</button>
+                    <span class="displayOffMobile">
+                        <button type="button" class="fightButton btn btn-secondary">Fight</button>
+                        <button type="button" class="resetButton btn btn-primary">Restart</button>
+
+                        <div class="bg-dark text-light p-3 mt-3">
+                            <p class="fightInfo1"></p>
+                            <p class="fightInfo2"></p>
+                        </div>
+
                     </span>
-                    <div class="bg-dark text-light p-3 mt-3">
-                        <p id="fightInfo1"></p>
-                        <p id="fightInfo2"></p>
-                    </div>
                 </div>
 
                 <!-- Defender Selected -->
 
-                <div class="col-sm-4 text-center">
+                <div class="col-4 text-center">
                     <p class="text-light my-3"></p>
                     <div id="defender" class="col-sm-12 mx-auto d-none">
                         <div id="defenderCard" class="card character bg-danger text-light">
-                            <h6 id="defenderName" class="card-title text-center"></h6>
+                            <span class="name-tag">
+                                <h6 id="defenderName" class="card-title text-center"></h6>
+                            </span>
                             <img id="defenderImage" class="card-img-top" src="" alt="Card image cap">
                             <div class="card-body text-center">
-                                <p class="card-text">HP: <span id="defenderHealth"></span></p>
+                                <p class="card-text"><span class="hp-tag">HP: </span><span id="defenderHealth"></span></p>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Fight Section for mobile -->
+
+                <div class="col-12 text-center displayOnMobile">
+
+
+                    <button type="button" class="fightButton btn btn-secondary">Fight</button>
+                    <button type="button" class="resetButton btn btn-primary">Restart</button>
+
+                    <div class="bg-dark text-light p-3 mt-3">
+                        <p class="fightInfo1"></p>
+                        <p class="fightInfo2"></p>
                     </div>
                 </div>
 

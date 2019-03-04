@@ -99,12 +99,12 @@ $(document).ready(function () {
         $("#task").text("Select Your Character");
         console.log("reset");
 
-        $("#fightButton").removeClass("d-none");
-        $("#fightButton").removeClass("btn-light");
-        $("#resetButton").addClass("d-none");
+        $(".fightButton").removeClass("d-none");
+        $(".fightButton").removeClass("btn-light");
+        $(".resetButton").addClass("d-none");
 
-        $("#fightInfo1").html("");
-        $("#fightInfo2").html("");
+        $(".fightInfo1").html("");
+        $(".fightInfo2").html("");
 
     }
 
@@ -131,7 +131,7 @@ $(document).ready(function () {
         $("#defenderName").html(defender.name)
         $("#defenderImage").attr("src", defender.portrait);
         $("#defenderHealth").html(defender.health);
-        $("#fightButton").addClass("btn-light");
+        $(".fightButton").addClass("btn-light");
 
         console.log(defender);
         defenderIsSelected = true;
@@ -238,14 +238,14 @@ $(document).ready(function () {
 
 
 
-    $("#fightButton").on("click", function () {
+    $(".fightButton").on("click", function () {
 
         if (playerIsSelected === true && defenderIsSelected === true && player.health > 0) {
 
 
             defender.health -= player.counterAttackPower;
             $("#defenderHealth").html(defender.health);
-            $("#fightInfo1").html("You attacked " + defender.name + " for " + player.counterAttackPower + " damage.")
+            $(".fightInfo1").html("You attacked " + defender.name + " for " + player.counterAttackPower + " damage.")
             console.log("defender health: " + defender.health);
 
 
@@ -255,18 +255,18 @@ $(document).ready(function () {
             if (defender.health > 0) {
                 player.health -= defender.counterAttackPower;
                 $("#playerHealth").html(player.health);
-                $("#fightInfo2").html(defender.name + " attacked you for " + defender.counterAttackPower + " damage.")
+                $(".fightInfo2").html(defender.name + " attacked you for " + defender.counterAttackPower + " damage.")
                 console.log("player health: " + player.health);
 
                 // Lose Conditions
 
                 if (player.health <= 0) {
                     $("#task").text("Defeat!");
-                    $("#fightInfo2").html(defender.name + " destroyed you!");
+                    $(".fightInfo2").html(defender.name + " destroyed you!");
                     $("#playerCard").addClass("bg-dark");
                     $("#playerImage").attr("src", player.portraitDefeat);
-                    $("#fightButton").addClass("d-none");
-                    $("#resetButton").removeClass("d-none")
+                    $(".fightButton").addClass("d-none");
+                    $(".resetButton").removeClass("d-none")
 
                 }
 
@@ -280,12 +280,12 @@ $(document).ready(function () {
                 // win round conditions
                 if (killCount < 3) {
 
-                    $("#fightInfo2").html("You defeated " + defender.name + "!")
+                    $(".fightInfo2").html("You defeated " + defender.name + "!")
                     $("#defenderCard").addClass("bg-dark");
                     $("#defenderImage").attr("src", defender.portraitDefeat);
                     $(".char-select").removeClass("bg-secondary");
                     $("#task").text("Select a Defender");
-                    $("#fightButton").removeClass("btn-light");
+                    $(".fightButton").removeClass("btn-light");
 
 
                     // win game conditions
@@ -294,21 +294,30 @@ $(document).ready(function () {
                     $("#defenderCard").addClass("bg-dark");
                     $("#defenderImage").attr("src", defender.portraitDefeat);
                     $("#task").text("Victory!");
-                    $("#fightInfo2").html("You eliminated them all!");
-                    $("#fightButton").addClass("d-none");
-                    $("#resetButton").removeClass("d-none")
+                    $(".fightInfo2").html("You eliminated them all!");
+                    $(".fightButton").addClass("d-none");
+                    $(".resetButton").removeClass("d-none")
 
                 }
 
             }
 
+        } else if (playerIsSelected === true && defenderIsSelected === false) {
+
+            $(".fightInfo1").html("Need to select a Defender.")
+            $(".fightInfo2").html("")
+            console.log("Need to select Defender")
+
         } else {
-            console.log("need to select player and defender")
+
+            $(".fightInfo1").html("Need to select your Character.")
+            $(".fightInfo2").html("")
+            console.log("Need to select your Character")
         }
 
     });
 
-    $("#resetButton").on("click", function () {
+    $(".resetButton").on("click", function () {
 
         reset();
     })

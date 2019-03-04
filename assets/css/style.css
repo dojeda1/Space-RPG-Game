@@ -23,3 +23,31 @@ html {
 
 
 }
+
+.displayOnMobile {
+    display: none;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .char-select {
+        width: 120%;
+    }
+
+    .hp-tag {
+        display: none;
+    }
+
+    .name-tag {
+        display: none;
+    }
+
+    .displayOffMobile {
+        display: None;
+    }
+
+    .displayOnMobile {
+        display: block;
+    }
+}
