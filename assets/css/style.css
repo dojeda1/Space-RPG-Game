@@ -31,10 +31,6 @@ html {
 
 @media screen and (max-width: 768px) {
 
-    .char-select {
-        width: 120%;
-    }
-
     .hp-tag {
         display: none;
     }
@@ -51,5 +47,30 @@ html {
         display: block;
     }
 
-    .battle-card {}
+    .battle-card {
+
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+
+    .fight-section1 {
+
+        padding: 0px;
+
+    }
+
+    .card-text {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #vader,
+    #xenomorph,
+    #predator,
+    #terminator,
+    #player,
+    #defender {
+        padding: 5px;
+    }
 }
