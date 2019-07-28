@@ -6,6 +6,8 @@ Choose one of 4 classic Sci-fi characters to play as and try to defeat all of th
 
   **Visit Web App [Here!](https://dojeda1.github.io/Space-RPG-Game/)**
 
+![Web App Image](./demo.png)
+
 ### Technologies used
 
 * HTML
