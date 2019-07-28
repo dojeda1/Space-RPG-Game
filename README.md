@@ -1,2 +1,15 @@
-# Space-RPG-Game
-Assignment 4, Challenge
+# Sci-fi RPG
+
+### About this Project
+
+Choose one of 4 classic Sci-fi characters to play as and try to defeat all of the remaining opponents. Each character has different health, strength, and leveling up stats and you must choose defenders in particular orders to obtain victory.
+
+  **Visit Web App [Here!](https://dojeda1.github.io/Space-RPG-Game/)**
+
+### Technologies used
+
+* HTML
+* CSS
+* JavaScript
+* jQuery
+* Bootstrap
