@@ -242,65 +242,77 @@ $(document).ready(function () {
 
         if (playerIsSelected === true && defenderIsSelected === true && player.health > 0) {
 
+            $('.fightButton').addClass('disabled');
 
-            defender.health -= player.counterAttackPower;
-            $("#defenderHealth").html(defender.health);
-            $(".fightInfo1").html("You attacked " + defender.name + " for " + player.counterAttackPower + " damage.")
-            console.log("defender health: " + defender.health);
+            $('.fightInfo1').empty();
+            $('.fightInfo2').empty();
 
+            $('#playerCard').addClass('attack-right');
+            // $('#defenderCard').addClass('damage');
+            setTimeout(function() {
+                $('#playerCard').removeClass('attack-right');
+                // $('#defenderCard').removeClass('damage');
 
-            player.counterAttackPower += player.attackPower;
-            console.log("player power: " + player.counterAttackPower);
+                defender.health -= player.counterAttackPower;
+                $("#defenderHealth").html(defender.health);
+                $(".fightInfo1").html("You attacked " + defender.name + " for " + player.counterAttackPower + " damage.")
+                console.log("defender health: " + defender.health);
 
-            if (defender.health > 0) {
-                player.health -= defender.counterAttackPower;
-                $("#playerHealth").html(player.health);
-                $(".fightInfo2").html(defender.name + " attacked you for " + defender.counterAttackPower + " damage.")
-                console.log("player health: " + player.health);
+                player.counterAttackPower += player.attackPower;
+                console.log("player power: " + player.counterAttackPower);
 
-                // Lose Conditions
+                if (defender.health > 0) {
+                    // $('#playerCard').addClass('damage');
+                    $('#defenderCard').addClass('attack-left');
+                    setTimeout(function() {
+                        // $('#playerCard').removeClass('damage');
+                        $('#defenderCard').removeClass('attack-left');
 
-                if (player.health <= 0) {
-                    $("#task").text("Defeat!");
-                    $(".fightInfo2").html(defender.name + " destroyed you!");
-                    $("#playerCard").addClass("bg-dark");
-                    $("#playerImage").attr("src", player.portraitDefeat);
-                    $(".fightButton").addClass("d-none");
-                    $(".resetButton").removeClass("d-none")
+                        player.health -= defender.counterAttackPower;
+                        $("#playerHealth").html(player.health);
+                        $(".fightInfo2").html(defender.name + " attacked you for " + defender.counterAttackPower + " damage.")
+                        console.log("player health: " + player.health);
 
-                }
-
-            } else {
-
-                defenderIsSelected = false;
-
-                killCount++;
-                console.log("kills: " + killCount);
-
-                // win round conditions
-                if (killCount < 3) {
-
-                    $(".fightInfo2").html("You defeated " + defender.name + "!")
-                    $("#defenderCard").addClass("bg-dark");
-                    $("#defenderImage").attr("src", defender.portraitDefeat);
-                    $(".char-select").removeClass("bg-secondary");
-                    $("#task").text("Select a Defender");
-                    $(".fightButton").removeClass("btn-light");
-
-
-                    // win game conditions
+                        // Lose Conditions
+                        if (player.health <= 0) {
+                            $("#task").text("Defeat!");
+                            $(".fightInfo2").html(defender.name + " destroyed you!");
+                            $("#playerCard").addClass("bg-dark");
+                            $("#playerImage").attr("src", player.portraitDefeat);
+                            $(".fightButton").addClass("d-none");
+                            $(".resetButton").removeClass("d-none")
+                        }
+                        $('.fightButton').removeClass('disabled');
+                    },300);
                 } else {
-
-                    $("#defenderCard").addClass("bg-dark");
-                    $("#defenderImage").attr("src", defender.portraitDefeat);
-                    $("#task").text("Victory!");
-                    $(".fightInfo2").html("You eliminated them all!");
-                    $(".fightButton").addClass("d-none");
-                    $(".resetButton").removeClass("d-none")
-
+                    
+                    defenderIsSelected = false;
+                    
+                    killCount++;
+                    console.log("kills: " + killCount);
+                    
+                    // win round conditions
+                    if (killCount < 3) {
+                        $(".fightInfo2").html("You defeated " + defender.name + "!")
+                        $("#defenderCard").addClass("bg-dark");
+                        $("#defenderImage").attr("src", defender.portraitDefeat);
+                        $(".char-select").removeClass("bg-secondary");
+                        $("#task").text("Select a Defender");
+                        $(".fightButton").removeClass("btn-light");
+                        
+                        // win game conditions
+                    } else {
+                        $("#defenderCard").addClass("bg-dark");
+                        $("#defenderImage").attr("src", defender.portraitDefeat);
+                        $("#task").text("Victory!");
+                        $(".fightInfo2").html("You eliminated them all!");
+                        $(".fightButton").addClass("d-none");
+                        $(".resetButton").removeClass("d-none")
+                    }
+                    $('.fightButton').removeClass('disabled');
                 }
+            },300);
 
-            }
 
         } else if (playerIsSelected === true && defenderIsSelected === false) {
 

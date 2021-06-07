@@ -19,7 +19,7 @@
 
     <div class="background">
 
-        <div class="container">
+        <div class="container p-3">
 
             <div class="row text-light">
                 <div class="col-sm-12 text-center">
@@ -30,56 +30,43 @@
 
             <!-- Character Roster -->
 
-            <div class="row">
-
-                <div id="xenomorph" class="col-3 mx-auto">
-                    <div class="card char-select">
-                        <span class="name-tag">
-                            <h6 class="card-title text-center">Xenomorph</h6>
-                        </span>
-                        <img class="card-img-top" src="./assets/images/xenomorph.jpg" alt="Card image cap">
-                        <div class="card-body text-center p-3">
-                            <p class="card-text"><span class="hp-tag">HP: </span><span class="xhp"></span></p>
-                        </div>
+            <div class="cards-container">
+                <div id="xenomorph" class="card char-select">
+                    <span class="name-tag">
+                        <h6 class="card-title text-center">Xenomorph</h6>
+                    </span>
+                    <img class="card-img-top" src="./assets/images/xenomorph.jpg" alt="Card image cap">
+                    <div class="card-body text-center p-3">
+                        <p class="card-text"><span class="hp-tag">HP: </span><span class="xhp"></span></p>
                     </div>
                 </div>
-
-                <div id="vader" class="col-3 mx-auto">
-                    <div class="card char-select">
-                        <span class="name-tag">
-                            <h6 class="card-title text-center">Darth Vader</h6>
-                        </span>
-                        <img class="card-img-top" src="./assets/images/vader.jpg" alt="Card image cap">
-                        <div class="card-body text-center p-3">
-                            <p class="card-text"><span class="hp-tag">HP: </span><span class="vhp"></span></p>
-                        </div>
+                <div id="vader" class="card char-select">
+                    <span class="name-tag">
+                        <h6 class="card-title text-center">Darth Vader</h6>
+                    </span>
+                    <img class="card-img-top" src="./assets/images/vader.jpg" alt="Card image cap">
+                    <div class="card-body text-center p-3">
+                        <p class="card-text"><span class="hp-tag">HP: </span><span class="vhp"></span></p>
                     </div>
                 </div>
-
-                <div id="predator" class="col-3 mx-auto">
-                    <div class="card char-select">
-                        <span class="name-tag">
-                            <h6 class="card-title text-center">Predator</h6>
-                        </span>
-                        <img class="card-img-top" src="./assets/images/predator.jpg" alt="Card image cap">
-                        <div class="card-body text-center p-3">
-                            <p class="card-text"><span class="hp-tag">HP: </span><span class="php"></span></p>
-                        </div>
+                <div id="predator" class="card char-select">
+                    <span class="name-tag">
+                        <h6 class="card-title text-center">Predator</h6>
+                    </span>
+                    <img class="card-img-top" src="./assets/images/predator.jpg" alt="Card image cap">
+                    <div class="card-body text-center p-3">
+                        <p class="card-text"><span class="hp-tag">HP: </span><span class="php"></span></p>
                     </div>
                 </div>
-
-                <div id="terminator" class="col-3 mx-auto">
-                    <div class="card char-select">
-                        <span class="name-tag">
-                            <h6 class="card-title text-center">Terminator</h6>
-                        </span>
-                        <img class="card-img-top" src="./assets/images/terminator.jpg" alt="Card image cap">
-                        <div class="card-body text-center p-3">
-                            <p class="card-text"><span class="hp-tag">HP: </span><span class="thp"></span></p>
-                        </div>
+                <div id="terminator" class="card char-select">
+                    <span class="name-tag">
+                        <h6 class="card-title text-center">Terminator</h6>
+                    </span>
+                    <img class="card-img-top" src="./assets/images/terminator.jpg" alt="Card image cap">
+                    <div class="card-body text-center p-3">
+                        <p class="card-text"><span class="hp-tag">HP: </span><span class="thp"></span></p>
                     </div>
                 </div>
-
             </div>
 
             <!-- Player Selected -->
@@ -104,12 +91,12 @@
                 <!-- Fight Section -->
 
                 <div class="col-4 text-center fight-section1">
-                    <h1 class="text-light mt-5 pt-5">VS.</h1>
+                    <h1 class="text-light mt-3">VS.</h1>
                     <span class="displayOffMobile">
                         <button type="button" class="fightButton btn btn-secondary">Fight</button>
                         <button type="button" class="resetButton btn btn-primary">Restart</button>
 
-                        <div class="bg-dark text-light p-3 mt-3">
+                        <div class="fight-text rounded bg-dark text-light p-3 mt-3">
                             <p class="fightInfo1"></p>
                             <p class="fightInfo2"></p>
                         </div>
@@ -142,7 +129,7 @@
                     <button type="button" class="fightButton btn btn-secondary">Fight</button>
                     <button type="button" class="resetButton btn btn-primary">Restart</button>
 
-                    <div class="bg-dark text-light p-3 mt-3">
+                    <div class="fight-text rounded bg-dark text-light p-3 mt-3">
                         <p class="fightInfo1"></p>
                         <p class="fightInfo2"></p>
                     </div>

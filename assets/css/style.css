@@ -1,9 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
 body,
 html {
-
-
+    font-family: 'Orbitron', sans-serif;
     height: 100%;
-
 }
 
 
@@ -24,10 +24,74 @@ html {
 
 }
 
+.cards-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.card-title {
+    margin-top: .75rem;
+}
+
+.char-select {
+    cursor: pointer;
+    margin: 1%;
+    max-width: 150px;
+    width: 23%;
+}
+
+.char-select:not(.bg-secondary):hover {
+    border: 1px solid gold;
+}
+
+.char-select.bg-secondary {
+    cursor: default;
+}
+
+.fightButton.disabled {
+    opacity: .2;
+    pointer-events: none;
+}
+
 .displayOnMobile {
     display: none;
 }
 
+.fight-text {
+    min-height: 160px;
+}
+
+/* animations */
+.attack-right {
+    animation-name: attack-right;
+    animation-timing-function: ease;
+    transform-origin: bottom;
+    animation-duration: .3s;
+    animation-iteration-count: 1;
+    /* animation-iteration-count: infinite; */
+}
+
+.attack-left {
+    animation-name: attack-left;
+    animation-timing-function: ease;
+    transform-origin: bottom;
+    animation-duration: .3s;
+    animation-iteration-count: 1;
+    /* animation-iteration-count: infinite; */
+}
+
+@keyframes attack-right {
+    0%   { transform: translateX(0); }
+    50%  { transform: translateX(30px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes attack-left {
+    0%   { transform: translateX(0); }
+    50%  { transform: translateX(-30px); }
+    100% { transform: translateX(0); }
+}
 
 @media screen and (max-width: 768px) {
 
@@ -48,29 +112,20 @@ html {
     }
 
     .battle-card {
-
         padding-left: 0;
         padding-right: 0;
     }
 
 
     .fight-section1 {
-
         padding: 0px;
-
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .card-text {
         padding-left: 0;
         padding-right: 0;
-    }
-
-    #vader,
-    #xenomorph,
-    #predator,
-    #terminator,
-    #player,
-    #defender {
-        padding: 5px;
     }
 }
